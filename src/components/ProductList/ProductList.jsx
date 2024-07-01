@@ -1,6 +1,5 @@
-import ProductItem from "./ProductItem";
-import "./Product.css";
-import productData from "./productData.js";
+import ProductItem from "../ProductItem/ProductItem.jsx";
+import productData from "../productData.js";
 
 const ProductList = () => {
     return (

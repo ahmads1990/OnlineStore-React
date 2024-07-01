@@ -1,3 +1,5 @@
+import "./ProductItem.css";
+
 const ProductItem = ({ productData }) => {
     return (
         <div className="product col-3 mb-4">
