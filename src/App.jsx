@@ -1,10 +1,10 @@
 import "./App.css";
+import ProductList from "./components/ProductList";
 
 const App = () => {
     return (
         <>
-            <h1 className="text-bg-danger">Hello world!</h1>
-            <div>First version</div>
+            <ProductList></ProductList>
         </>
     );
 };
