@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import ProductItem from "../ProductItem/ProductItem.jsx";
-import productData from "../productData.js";
+
+import { getProductData } from "./ProductListService.js";
 
 const ProductList = () => {
+    const [productData, setProductData] = useState([]);
+
+    useEffect(() => {
+        const fetchProductData = async () => {
+            const result = await getProductData();
+            setProductData(result);
+            console.log(productData);
+        };
+        fetchProductData();
+        console.log(productData);
+    }, []);
+
     return (
         <div className="container">
             <div className="row">
