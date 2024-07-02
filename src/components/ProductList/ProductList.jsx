@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react";
 import ProductItem from "../ProductItem/ProductItem.jsx";
-
-import { getProductData } from "./ProductListService.js";
+import useFetch from "../../hooks/useFetch.js";
+import ApiUrls from "../../apiUrls.js";
 
 const ProductList = () => {
-    const [productData, setProductData] = useState([]);
-
-    useEffect(() => {
-        const fetchProductData = async () => {
-            const result = await getProductData();
-            setProductData(result);
-            console.log(productData);
-        };
-        fetchProductData();
-        console.log(productData);
-    }, []);
+    const { data: productData, isLoading, error } = useFetch(ApiUrls.getAll);
 
     return (
         <div className="container">
@@ -28,9 +17,16 @@ const ProductList = () => {
                 <div className="col">
                     <div className="row px-3 mb-3">{productData.length} Products</div>
                     <div className="row">
-                        {productData.map((product) => (
-                            <ProductItem key={product.Id} productData={product} />
-                        ))}
+                        {isLoading && (
+                            // Loading spinner
+                            <div className="spinner-border text-danger" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        )}
+                        {error && <div className="text-danger">{error}</div>}
+
+                        {productData &&
+                            productData.map((product) => <ProductItem key={product.Id} productData={product} />)}
                     </div>
                 </div>
             </div>
