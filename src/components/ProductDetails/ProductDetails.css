@@ -1,0 +1,6 @@
+.product-details img {
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 400px;
+    max-height: 400px;
+}
