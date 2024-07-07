@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch.js";
 import ApiUrls from "../../apiUrls.js";
 
 const ProductList = () => {
-    const { data: productData, isLoading, error } = useFetch(ApiUrls.getAll);
+    const { data: productData, isLoading, error } = useFetch(ApiUrls.getAllProducts);
 
     return (
         <div className="container">
