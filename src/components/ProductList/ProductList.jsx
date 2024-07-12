@@ -1,9 +1,8 @@
 import ProductItem from "../ProductItem/ProductItem.jsx";
-import useFetch from "../../hooks/useFetch.js";
-import ApiUrls from "../../apiUrls.js";
+import useFetchProducts from "../../hooks/useFetchProducts.js";
 
 const ProductList = () => {
-    const { data: productData, isLoading, error } = useFetch(ApiUrls.getAllProducts);
+    const { data: productData, isLoading, error } = useFetchProducts();
 
     return (
         <div className="container">

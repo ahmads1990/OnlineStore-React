@@ -1,23 +1,16 @@
-import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch.js";
-import ApiUrls from "../../apiUrls.js";
-import { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import DetailsAccordion from "./DetailsAccordion.jsx";
 import QuantitySelector from "./QuantitySelector.jsx";
+import useFetchProducts from "../../hooks/useFetchProducts.js";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const { data, isLoading, error } = useFetch(ApiUrls.getAllProducts);
-    const [productData, setProductData] = useState(null);
+    const { data: productData, isLoading, error } = useFetchProducts(id);
 
     const [productQuantity, setProductQuantity] = useState(0);
-    useEffect(() => {
-        if (data) {
-            const filtered = data.find((p) => p.Id == id);
-            setProductData(filtered);
-        }
-    }, [data]);
+
     const incQuantity = () => {
         setProductQuantity(productQuantity + 1);
     };

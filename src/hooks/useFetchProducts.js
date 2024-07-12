@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { getAllProducts, getProductById } from "../services/productService";
 
-const useFetch = (url) => {
+const useFetchProducts = (url, id) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -8,13 +9,15 @@ const useFetch = (url) => {
     useEffect(() => {
         const abortController = new AbortController();
 
-        const fetchData = async () => {
+        const fetchData = async (id) => {
             try {
-                const response = await fetch(url, { signal: abortController.signal });
-                if (!response.ok) {
-                    throw Error("could not fetch the data for that resource");
-                }
-                const data = await response.json();
+                let data;
+                if (id) {
+                    // data = await getProductById(id, abortController);
+                    data = await getAllProducts(abortController);
+                    data = data.find((p) => p.Id == id);
+                } else data = await getAllProducts(abortController);
+
                 setData(data);
                 setIsLoading(false);
             } catch (error) {
@@ -28,9 +31,9 @@ const useFetch = (url) => {
         };
 
         fetchData(url);
-    }, [url]);
+    }, [url, id]);
 
     return { data, isLoading, error };
 };
 
-export default useFetch;
+export default useFetchProducts;
