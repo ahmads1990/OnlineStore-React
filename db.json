@@ -7,7 +7,12 @@
             "Details": "Product of Fukuoka Prefecture#Common Allergens:Milk, Eggs, Wheat, Soy#Also Contains:None#Vegetarian#1 Piece",
             "Price": 2,
             "MainImage": "PioneGrapeChocolateCrunch(1Piece)_0.jpg",
-            "SecImages": "PioneGrapeChocolateCrunch(1Piece)_1.jpg,PioneGrapeChocolateCrunch(1Piece)_2.jpg,PioneGrapeChocolateCrunch(1Piece)_3.jpg,PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            "SecImages": [
+                "PioneGrapeChocolateCrunch(1Piece)_1.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_2.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_3.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            ]
         },
         {
             "Id": 2,
@@ -25,7 +30,12 @@
             "Details": "Product of Fukuoka Prefecture#Common Allergens:Milk, Eggs, Wheat, Soy#Also Contains:None#Vegetarian#1 Piece",
             "Price": 2,
             "MainImage": "PioneGrapeChocolateCrunch(1Piece)_0.jpg",
-            "SecImages": "PioneGrapeChocolateCrunch(1Piece)_1.jpg,PioneGrapeChocolateCrunch(1Piece)_2.jpg,PioneGrapeChocolateCrunch(1Piece)_3.jpg,PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            "SecImages": [
+                "PioneGrapeChocolateCrunch(1Piece)_1.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_2.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_3.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            ]
         },
         {
             "Id": 4,
@@ -43,7 +53,12 @@
             "Details": "Product of Fukuoka Prefecture#Common Allergens:Milk, Eggs, Wheat, Soy#Also Contains:None#Vegetarian#1 Piece",
             "Price": 2,
             "MainImage": "PioneGrapeChocolateCrunch(1Piece)_0.jpg",
-            "SecImages": "PioneGrapeChocolateCrunch(1Piece)_1.jpg,PioneGrapeChocolateCrunch(1Piece)_2.jpg,PioneGrapeChocolateCrunch(1Piece)_3.jpg,PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            "SecImages": [
+                "PioneGrapeChocolateCrunch(1Piece)_1.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_2.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_3.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            ]
         },
         {
             "Id": 6,
@@ -61,7 +76,12 @@
             "Details": "Product of Fukuoka Prefecture#Common Allergens:Milk, Eggs, Wheat, Soy#Also Contains:None#Vegetarian#1 Piece",
             "Price": 2,
             "MainImage": "PioneGrapeChocolateCrunch(1Piece)_0.jpg",
-            "SecImages": "PioneGrapeChocolateCrunch(1Piece)_1.jpg,PioneGrapeChocolateCrunch(1Piece)_2.jpg,PioneGrapeChocolateCrunch(1Piece)_3.jpg,PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            "SecImages": [
+                "PioneGrapeChocolateCrunch(1Piece)_1.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_2.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_3.jpg",
+                "PioneGrapeChocolateCrunch(1Piece)_4.jpg"
+            ]
         },
         {
             "Id": 8,
