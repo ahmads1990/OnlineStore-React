@@ -5,9 +5,9 @@ const ProductList = () => {
     const { data: productData, isLoading, error } = useFetchProducts();
 
     return (
-        <div className="container">
+        <div className="container-fluid px-5">
             <div className="row">
-                <div className="col-3">
+                <div className="col-2">
                     <div>Filter by price</div>
                     <div>Filter by price</div>
                     <div>Filter by price</div>
@@ -15,7 +15,7 @@ const ProductList = () => {
                 </div>
                 <div className="col">
                     <div className="row px-3 mb-3">{productData.length} Products</div>
-                    <div className="row">
+                    <div className="row g-3">
                         {isLoading && (
                             // Loading spinner
                             <div className="spinner-border text-danger" role="status">

@@ -1,8 +1,19 @@
 .card .card-img-top {
-    min-width: 100px;
-    min-height: 100px;
+    /* min-width: 150px; */
+    min-height: 150px;
+    width: 100%;
+    height: auto;
 }
 
 .card .card-body {
     min-height: 120px;
+    font-size: 1rem;
+}
+/* to make card rectangular with no border radius */
+.product .card,
+.product .card-header,
+.product .card-img-top,
+.product .card-body,
+.product .card-footer {
+    border-radius: 0 !important;
 }
