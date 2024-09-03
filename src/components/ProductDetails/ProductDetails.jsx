@@ -4,6 +4,7 @@ import QuantitySelector from "./QuantitySelector.jsx";
 import useFetchProducts from "../../hooks/useFetchProducts.js";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import ImageGallery from "./ImageGallery.jsx";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -17,6 +18,8 @@ const ProductDetails = () => {
     const decQuantity = () => {
         setProductQuantity(productQuantity - 1);
     };
+    console.log(productData);
+
     return (
         <div className="container-fluid bg-body-secondary">
             {isLoading && (
@@ -29,9 +32,7 @@ const ProductDetails = () => {
 
             {productData && (
                 <div className="product-details row">
-                    <div className="image-gallery col-5 bg-body-tertiary">
-                        <img className="w-100" src={`/${productData.MainImage}`} alt="" />
-                    </div>
+                    <ImageGallery ImagesList={[productData.MainImage, ...(productData.SecImages || [])]} />
                     <div className="product-info col">
                         <h3>{productData.Title}</h3>
                         {/* Ratings */}
