@@ -1,10 +1,10 @@
 import "./ProductDetails.css";
-import DetailsAccordion from "./DetailsAccordion.jsx";
-import QuantitySelector from "./QuantitySelector.jsx";
+import DetailsAccordion from "./DetailsAccordion/DetailsAccordion.jsx";
+import QuantitySelector from "./QuantitySelector/QuantitySelector.jsx";
 import useFetchProducts from "../../hooks/useFetchProducts.js";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import ImageGallery from "./ImageGallery.jsx";
+import ImageGallery from "./ImageGallery/ImageGallery.jsx";
 
 const ProductDetails = () => {
     const { id } = useParams();
