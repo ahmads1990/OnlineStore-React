@@ -2,76 +2,119 @@ import { useEffect, useState } from "react";
 import SelectANum from "./SelectANum";
 
 const AddProductForm = () => {
-    const [images, setImages] = useState([]);
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        price: 0,
+        images: [],
+    });
     const [imageOrderOptions, setImageOrderOptions] = useState([]);
 
+    // add new image
     const onImagesUpload = (e) => {
-        let startIndex = images.length;
-        console.log(e);
         const files = Array.from(e.target.files);
         const uploadedImages = files.map((file) => {
-            startIndex += 1;
-            return { order: startIndex, file: file, previewFile: URL.createObjectURL(file) };
+            return { file: file, previewFile: URL.createObjectURL(file) };
         });
-        const newImages = [...images, ...uploadedImages];
-        console.log(newImages);
-
-        setImages(newImages);
+        // merge already uploaded image with new ones
+        const newImages = [...formData.images, ...uploadedImages];
+        handleImageDataChange(newImages);
     };
+    // change image ordering
     const changeImageOrder = (currentOrder, newOrder) => {
-        const updatedImages = images;
-        const movedImage = updatedImages.splice(currentOrder - 1, 1)[0];
-        updatedImages.splice(newOrder - 1, 0, movedImage);
-        const sortedImages = updatedImages.map((img, index) => ({
-            ...img,
-            order: index + 1,
-        }));
-        console.log(sortedImages);
+        const sortedImages = formData.images;
+        // remove image from array
+        const movedImage = sortedImages.splice(currentOrder - 1, 1)[0];
+        // reinsert that image into new index
+        sortedImages.splice(newOrder - 1, 0, movedImage);
 
-        setImages(sortedImages);
+        handleImageDataChange(sortedImages);
     };
+    // remove image
     const removeImage = (orderToRemove) => {
-        const filteredImages = images.filter((img) => img.order != orderToRemove);
-        const sortedImages = filteredImages.map((img, index) => ({
-            ...img,
-            order: index + 1,
-        }));
-        setImages(sortedImages);
+        let filteredImages = formData.images;
+        filteredImages.splice(orderToRemove - 1, 1);
+
+        handleImageDataChange(filteredImages);
     };
+    // clean up after comp unmount to remove url created for images
     useEffect(() => {
-        return () => images.forEach((img) => URL.revokeObjectURL(img.previewFile));
+        return () => formData.images.forEach((img) => URL.revokeObjectURL(img.previewFile));
     }, []);
     useEffect(() => {
-        setImageOrderOptions(Array.from({ length: images.length }, (_, i) => i + 1));
-    }, [images]);
+        setImageOrderOptions(Array.from({ length: formData.images.length }, (_, i) => i + 1));
+    }, [formData.images]);
+    // Handle form changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+    const handleImageDataChange = (imagesData) =>
+        setFormData({
+            ...formData,
+            images: imagesData,
+        });
+    // Handle form submit
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+    };
+
     return (
         <div>
-            <form action="">
+            <form action={handleFormSubmit} method="post">
                 {/* Product Title */}
                 <div className="mb-3">
                     <label htmlFor="InputProductTitle" className="form-label">
                         Product Title
                     </label>
-                    <input type="text" className="form-control" id="InputProductTitle" placeholder="product" />
+                    <input
+                        id="InputProductTitle"
+                        type="text"
+                        className="form-control"
+                        name="title"
+                        placeholder="product"
+                        value={formData.title}
+                        onChange={handleChange}
+                    />
                 </div>
                 {/* Description */}
                 <div className="mb-3">
                     <label htmlFor="InputDescription" className="form-label">
                         Description
                     </label>
-                    <input type="text" className="form-control" id="InputDescription" placeholder="Description" />
+                    <input
+                        id="InputDescription"
+                        type="text"
+                        className="form-control"
+                        placeholder="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
                 </div>
                 {/* Price */}
                 <div className="mb-3">
                     <label htmlFor="InputPrice" className="form-label">
                         Price
                     </label>
-                    <input type="number" className="form-control" id="InputPrice" placeholder="0" />
+                    <input
+                        id="InputPrice"
+                        type="number"
+                        className="form-control"
+                        name="price"
+                        placeholder="0"
+                        value={formData.price}
+                        onChange={handleChange}
+                    />
                 </div>
                 {/* Images */}
                 <div className="mb-3">
                     <label className="form-label">Upload more Images</label>
                     <input type="file" className="form-control" multiple onChange={onImagesUpload} />
+                    {/* to display uploaded image */}
                     <table className="table table-hover ">
                         <thead className="table-dark">
                             <tr>
@@ -83,12 +126,12 @@ const AddProductForm = () => {
                         </thead>
 
                         <tbody>
-                            {images.map((img) => (
+                            {formData.images.map((img, index) => (
                                 <tr key={img.previewFile}>
                                     <td>
                                         <SelectANum
                                             options={imageOrderOptions}
-                                            value={img.order}
+                                            value={index + 1}
                                             onSelect={changeImageOrder}
                                         />
                                     </td>
@@ -116,6 +159,10 @@ const AddProductForm = () => {
                         </tbody>
                     </table>
                 </div>
+                {/* Submit */}
+                <button type="submit" className="btn btn-primary">
+                    Submit
+                </button>
             </form>
         </div>
     );
