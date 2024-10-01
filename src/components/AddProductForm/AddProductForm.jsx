@@ -25,7 +25,6 @@ const AddProductForm = () => {
         const imagesCopy = formData.images;
         // remove image from array
         const movedImage = imagesCopy.splice(currentOrder - 1, 1)[0];
-
         if (newOrder !== null && newOrder !== undefined)
             // reinsert that image into new index
             imagesCopy.splice(newOrder - 1, 0, movedImage);
@@ -59,8 +58,8 @@ const AddProductForm = () => {
     };
 
     return (
-        <div>
-            <form action={handleFormSubmit} method="post">
+        <div className="d-flex justify-content-center">
+            <form onSubmit={handleFormSubmit} method="post" className="w-50">
                 {/* Product Title */}
                 <div className="mb-3">
                     <label htmlFor="InputProductTitle" className="form-label">
@@ -81,10 +80,11 @@ const AddProductForm = () => {
                     <label htmlFor="InputDescription" className="form-label">
                         Description
                     </label>
-                    <input
+                    <textarea
                         id="InputDescription"
                         type="text"
                         className="form-control"
+                        name="description"
                         placeholder="description"
                         value={formData.description}
                         onChange={handleChange}
@@ -110,7 +110,7 @@ const AddProductForm = () => {
                     <label className="form-label">Upload more Images</label>
                     <input type="file" className="form-control" multiple onChange={onImagesUpload} />
                     {/* to display uploaded image */}
-                    <table className="table table-hover ">
+                    <table className="table table-hover mt-3">
                         <thead className="table-dark">
                             <tr>
                                 <th>Order</th>
