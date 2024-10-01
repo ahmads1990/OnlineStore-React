@@ -20,22 +20,17 @@ const AddProductForm = () => {
         const newImages = [...formData.images, ...uploadedImages];
         handleImageDataChange(newImages);
     };
-    // change image ordering
-    const changeImageOrder = (currentOrder, newOrder) => {
-        const sortedImages = formData.images;
+    // change image ordering or delete it
+    const updateImageOrder = (currentOrder, newOrder) => {
+        const imagesCopy = formData.images;
         // remove image from array
-        const movedImage = sortedImages.splice(currentOrder - 1, 1)[0];
-        // reinsert that image into new index
-        sortedImages.splice(newOrder - 1, 0, movedImage);
+        const movedImage = imagesCopy.splice(currentOrder - 1, 1)[0];
 
-        handleImageDataChange(sortedImages);
-    };
-    // remove image
-    const removeImage = (orderToRemove) => {
-        let filteredImages = formData.images;
-        filteredImages.splice(orderToRemove - 1, 1);
+        if (newOrder !== null && newOrder !== undefined)
+            // reinsert that image into new index
+            imagesCopy.splice(newOrder - 1, 0, movedImage);
 
-        handleImageDataChange(filteredImages);
+        handleImageDataChange(imagesCopy);
     };
     // clean up after comp unmount to remove url created for images
     useEffect(() => {
@@ -132,7 +127,7 @@ const AddProductForm = () => {
                                         <SelectANum
                                             options={imageOrderOptions}
                                             value={index + 1}
-                                            onSelect={changeImageOrder}
+                                            onSelect={updateImageOrder}
                                         />
                                     </td>
                                     <td> {img.file.name}</td>
@@ -149,7 +144,7 @@ const AddProductForm = () => {
                                         <button
                                             type="button"
                                             className="btn btn-danger"
-                                            onClick={() => removeImage(img.order)}
+                                            onClick={() => updateImageOrder(index + 1)}
                                         >
                                             Delete
                                         </button>
