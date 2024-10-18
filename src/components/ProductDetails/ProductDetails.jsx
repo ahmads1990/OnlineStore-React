@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
             {productData && (
                 <div className="product-details row">
-                    <ImageGallery ImagesList={[productData.MainImage, ...(productData.SecImages || [])]} />
+                    <ImageGallery ImagesList={productData.Images || []} />
                     <div className="product-info col">
                         <h3>{productData.Title}</h3>
                         {/* Ratings */}

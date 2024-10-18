@@ -12,10 +12,11 @@ const useFetchProducts = (url, id) => {
         const fetchData = async (id) => {
             try {
                 let data;
+                console.log("thjehe");
+                console.log(id);
+                console.log("thjehe");
                 if (id) {
-                    // data = await getProductById(id, abortController);
-                    data = await getAllProducts(abortController);
-                    data = data.find((p) => p.Id == id);
+                    data = await getProductById(id, abortController);
                 } else data = await getAllProducts(abortController);
 
                 setData(data);
